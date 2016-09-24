@@ -1,0 +1,48 @@
+<link rel="import" href="../polymer/polymer.html">
+<!--
+  `<load-image></load-image>` load a image
+  @demo demo.html
+-->
+<dom-module id="load-image">
+  <template>
+    <input type="file" id="flies" on-change="handleFileSelect" name="file" /> 
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: "load-image",
+    properties:{
+      src:{
+        notify:true,
+        type:String,
+      },
+    },
+    handleFileSelect: function(evt){
+        var that = this  
+        var file = evt.target.files; // FileList object
+      
+        // Loop through the FileList and render image files as thumbnails.
+        for (var i = 0, f; f = file[i]; i++) {
+      
+          // Only process image files.
+          if (!f.type.match('image.*')) {
+            continue;
+          }
+      
+          var reader = new FileReader();
+      
+          // Closure to capture the file information.
+          reader.onload = (function(theFile) {
+            return function(e) {
+              // output value
+              that.src = e.target.result
+            };
+          })(f);
+      
+          // Read in the image file as a data URL.
+          reader.readAsDataURL(f);
+        }
+      
+    },
+  })
+</script>

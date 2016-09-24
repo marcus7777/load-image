@@ -1,0 +1,13 @@
+{
+  "name": "load-image",
+  "version": "1.0.0",
+  "description": "load a image",
+  "main": "load-image.html",
+  "keywords": [
+    "polymer",
+    "web-components"
+  ],
+  "dependencies": {
+    "polymer": "*"
+  }
+}
