@@ -5,7 +5,7 @@
 -->
 <dom-module id="load-image">
   <template>
-    <label>{{label}} <img src="{{src}}" style="max-width:100px;max-height:70px" /><input accept="image/*" type="file" id="flies" on-change="handleFileSelect" name="file" /></label>
+    <label>{{label}} <img src="{{src}}" style="max-width:100px;max-height:70px;{{trans}}" /><input accept="image/*" type="file" id="flies" on-change="handleFileSelect" name="file" /></label>
   </template>
 </dom-module>
 <script>
@@ -19,6 +19,14 @@
       orientation:{
         notify:true,
       },
+      trans:{
+        computed:"getTrans(orientation)",
+        type:String,
+      },
+    },
+    getTrans: function(o){
+      var s = ["","transform: rotate(0)  scale(-1, 1)","transform: rotate(180deg)", "transform: rotate(180deg)  scale(-1, 1)", "transform: rotate(90deg)  scale(1, -1)","transform: rotate(90deg)", "transform: rotate(-90deg)  scale(1, -1)", "transform: rotate(-90deg)"]
+      return s[o-1]
     },
     handleFileSelect: function(evt){
       var that = this  
