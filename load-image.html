@@ -25,8 +25,12 @@
       },
     },
     getTrans: function(o){
-      var s = ["","transform: scale(-1, 1)","transform: rotate(180deg)", "transform: rotate(180deg)  scale(-1, 1)", "transform: rotate(90deg)  scale(1, -1)","transform: rotate(90deg)", "transform: rotate(-90deg)  scale(1, -1)", "transform: rotate(-90deg)"]
-      return s[o-1]
+      if (o > 0) {
+        var s = ["","transform: scale(-1, 1)","transform: rotate(180deg)", "transform: rotate(180deg)  scale(-1, 1)", "transform: rotate(90deg)  scale(1, -1)","transform: rotate(90deg)", "transform: rotate(-90deg)  scale(1, -1)", "transform: rotate(-90deg)"]
+        return s[o-1]
+      } else {
+        return o
+      }
     },
     handleFileSelect: function(evt){
       var that = this  
