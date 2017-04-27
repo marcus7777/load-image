@@ -8,6 +8,7 @@
     "web-components"
   ],
   "dependencies": {
-    "polymer": "*"
+    "polymer": "*",
+    "paper-button": "polymerelements/paper-button#~1.0.15"
   }
 }
