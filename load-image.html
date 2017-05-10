@@ -6,7 +6,7 @@
 -->
 <dom-module id="load-image">
   <template>
-    <label> <paper-button raised on-tap="press">[[label]]</paper-button> <img src="{{src}}" style="max-width:100px;max-height:70px;{{trans}}" /><input style="position: fixed;top: -1000px" accept="image/*" type="file" id="flies" on-change="handleFileSelect" name="file" /></label>
+    <label> <paper-button raised>[[label]]</paper-button> <img src="{{src}}" style="max-width:100px;max-height:70px;{{trans}}" /><input style="position: fixed;top: -1000px" accept="image/*" type="file" id="flies" on-change="handleFileSelect" name="file" /></label>
   </template>
 </dom-module>
 <script>
