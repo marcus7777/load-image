@@ -38,8 +38,10 @@
       
       var that = this
       var image = document.getElementById("image")
-      var src = image.src
-      
+      var src
+      if (image !== null) {
+        src = image.src
+      }
       if (EXIF && src && image !== null) {
         EXIF.getData(image, function() {
           that.exif = EXIF.getTags(this)
@@ -47,6 +49,9 @@
         })
       }
       var files = document.getElementById("files")
+      if (image !== null) {
+        src = files.src
+      }
       if (EXIF && src && files !== null) {
         EXIF.getData(files, function() {
           that.exif = EXIF.getTags(this)
