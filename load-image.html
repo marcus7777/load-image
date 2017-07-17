@@ -34,9 +34,12 @@
         type:String,
       },
     },
-    getExif: function(src) {
+    getExif: function(e) {
+      
       var that = this
       var image = document.getElementById("image")
+      var src = image.src
+      
       if (EXIF && src && image !== null) {
         EXIF.getData(image, function() {
           that.exif = EXIF.getTags(this)
