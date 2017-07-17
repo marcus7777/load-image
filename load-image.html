@@ -69,14 +69,19 @@
         this.getExif(f)
       }
     },
-    getExif: function(file, callback) {
+    getExif: function(file) {
       var that = this
-      if (EXIF) {
-        EXIF.readFromBinaryFile(file, function() {
-          that.exif = EXIF.getTags(this)
-          console.log(that.exif)
-        })
+      var reader3 = new FileReader()
+      reader3.onload = function(e) {
+        console.log(e)
+        if (EXIF) {
+          EXIF.readFromBinaryFile(file, function() {
+            that.exif = EXIF.getTags(this)
+            console.log(that.exif)
+          })
+        }
       }
+      reader2.readAsArrayBuffer(file)
     },
     getOrientation: function(file, callback) {
       var reader2 = new FileReader()
