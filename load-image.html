@@ -75,10 +75,8 @@
       reader3.onload = function(e) {
         console.log(e)
         if (EXIF) {
-          EXIF.readFromBinaryFile(this.result, function() {
-            that.exif = EXIF.getTags(this)
-            console.log(that.exif)
-          })
+          that.exif = EXIF.readFromBinaryFile(this.result)
+          console.log(that.exif)
         }
       }
       reader3.readAsArrayBuffer(file)
