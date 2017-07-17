@@ -31,21 +31,6 @@
         type:String,
       },
     },
-    ___getExif: function(e) {
-      
-      var that = this
-      var image = document.getElementById("image")
-      var src
-      if (image !== null) {
-        src = image.src
-      }
-      if (EXIF && src && image !== null) {
-        EXIF.getData(image, function() {
-          that.exif = EXIF.getTags(this)
-          console.log(that.exif)
-        })
-      }
-    },
     getTrans: function(o){
       if (o > 0) {
         var s = ["","transform: scale(-1, 1)","transform: rotate(180deg)", "transform: rotate(180deg)  scale(-1, 1)", "transform: rotate(90deg)  scale(1, -1)","transform: rotate(90deg)", "transform: rotate(-90deg)  scale(1, -1)", "transform: rotate(-90deg)"]
@@ -87,16 +72,12 @@
     getExif: function(file, callback) {
       var that = this
       var reader2 = new FileReader()
-      reader2.onload = function(e) {
-        var view = new DataView(e.target.result)
-        if (EXIF) {
-          EXIF.readFromBinaryFile(view, function() {
-            that.exif = EXIF.getTags(this)
-            console.log(that.exif)
-          })
-        }
+      if (EXIF) {
+        EXIF.readFromBinaryFile(reader2.readAsArrayBuffer(file), function() {
+          that.exif = EXIF.getTags(this)
+          console.log(that.exif)
+        })
       }
-      reader2.readAsArrayBuffer(file)
     },
     getOrientation: function(file, callback) {
       var reader2 = new FileReader()
