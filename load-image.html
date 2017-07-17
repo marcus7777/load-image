@@ -36,9 +36,16 @@
     },
     getExif: function(src) {
       var that = this
-      var flies = document.getElementById("flies")
-      if (EXIF && src) {
-        EXIF.getData(flies, function() {
+      var image = document.getElementById("image")
+      if (EXIF && src && image !== null) {
+        EXIF.getData(image, function() {
+          that.exif = EXIF.getTags(this)
+          console.log(that.exif)
+        })
+      }
+      var files = document.getElementById("files")
+      if (EXIF && src && files !== null) {
+        EXIF.getData(files, function() {
           that.exif = EXIF.getTags(this)
           console.log(that.exif)
         })
