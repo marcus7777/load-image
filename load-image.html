@@ -71,9 +71,8 @@
     },
     getExif: function(file, callback) {
       var that = this
-      var reader2 = new FileReader()
       if (EXIF) {
-        EXIF.readFromBinaryFile(reader2.readAsArrayBuffer(file), function() {
+        EXIF.readFromBinaryFile(file, function() {
           that.exif = EXIF.getTags(this)
           console.log(that.exif)
         })
