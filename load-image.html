@@ -1,12 +1,15 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-button/paper-button.html">
+
+<script src="../exif-js/exif-js"></script>
+
 <!--
   `<load-image></load-image>` load a image
   @demo demo.html
 -->
 <dom-module id="load-image">
   <template>
-    <label> <paper-button raised>[[label]]</paper-button> <img src="{{src}}" style="max-width:100px;max-height:70px;{{trans}}" /><input style="position: fixed;top: -1000px" accept="image/*" type="file" id="flies" on-change="handleFileSelect" name="file" /></label>
+    <label> <paper-button raised>[[label]]</paper-button> <img id="image" src="{{src}}" style="max-width:100px;max-height:70px;{{trans}}" /><input style="position: fixed;top: -1000px" accept="image/*" type="file" id="flies" on-change="handleFileSelect" name="file" /></label>
   </template>
 </dom-module>
 <script>
@@ -20,13 +23,24 @@
       orientation:{
         notify:true,
       },
-      gps:{
+      exif:{
         notify:true,
+      },
+      _exif:{
+        computed:"getExif(src)"
       },
       trans:{
         computed:"getTrans(orientation)",
         type:String,
       },
+    },
+    getExif: function(src) {
+      var that = this
+      var flies = document.getElementById("flies");
+      EXIF.getData(flies, function() {
+        that.exif = EXIF.getTags()
+        console.log(that.exif)
+      })
     },
     getTrans: function(o){
       if (o > 0) {
@@ -66,7 +80,7 @@
       }
     },
     getOrientation: function(file, callback) {
-      var reader2 = new FileReader();
+      var reader2 = new FileReader()
       reader2.onload = function(e) {
       var view = new DataView(e.target.result)
       if (view.getUint16(0, false) != 0xFFD8) return callback(-2);
