@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-button/paper-button.html">
 
-<script src="../exif-js/exif-js"></script>
+<script src="../exif-js/exif.js"></script>
 
 <!--
   `<load-image></load-image>` load a image
@@ -36,11 +36,13 @@
     },
     getExif: function(src) {
       var that = this
-      var flies = document.getElementById("flies");
-      EXIF.getData(flies, function() {
-        that.exif = EXIF.getTags()
-        console.log(that.exif)
-      })
+      var flies = document.getElementById("flies")
+      if (EXIF) {
+        EXIF.getData(flies, function() {
+          that.exif = EXIF.getTags(this)
+          console.log(that.exif)
+        })
+      }
     },
     getTrans: function(o){
       if (o > 0) {
