@@ -37,7 +37,7 @@
     getExif: function(src) {
       var that = this
       var flies = document.getElementById("flies")
-      if (EXIF) {
+      if (EXIF && src) {
         EXIF.getData(flies, function() {
           that.exif = EXIF.getTags(this)
           console.log(that.exif)
