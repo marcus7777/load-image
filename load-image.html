@@ -73,10 +73,8 @@
       var that = this
       var reader3 = new FileReader()
       reader3.onload = function(e) {
-        console.log(e)
         if (EXIF) {
           that.exif = EXIF.readFromBinaryFile(this.result)
-          console.log(that.exif)
         }
       }
       reader3.readAsArrayBuffer(file)
