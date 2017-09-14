@@ -30,7 +30,7 @@
       <template is="dom-if" if="[[!label]]">
         <iron-icon icon="[[icon]]"></iron-icon>
       </template>
-      <img id="image" src="{{src}}" style="max-width:100px;max-height:70px;{{trans}}" /><input style="position: fixed;top: -1000px" accept="image/*" type="file" id="flies" on-change="handleFileSelect" name="file" />
+      <img id="image" src="{{src}}" width="[[width]]" height="[[height]]" style="max-width:100px;max-height:70px;{{trans}}" /><input style="position: fixed;top: -1000px" accept="image/*" type="file" id="flies" on-change="handleFileSelect" name="file" />
     </label>
   </template>
 </dom-module>
