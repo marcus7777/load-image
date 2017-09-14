@@ -10,6 +10,14 @@
 -->
 <dom-module id="load-image">
   <template>
+    <style>
+      :host {
+        background: grey;
+        min-height: 30px;
+        min-width: 30px;
+        display: inline-block;
+      }
+    </style>
     <label>
       <template is="dom-if" if="[[label]]">
         <paper-button raised>[[label]]</paper-button>
