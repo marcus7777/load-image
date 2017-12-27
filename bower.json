@@ -8,7 +8,7 @@
     "web-components"
   ],
   "dependencies": {
-    "polymer": "*",
+    "polymer": "^1.11.2",
     "exif-js": "exif-js/exif-js",
     "paper-button": "polymerelements/paper-button#~1.0.15"
   }
