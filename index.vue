@@ -2,7 +2,7 @@
   <label :style="'height:'+height+';width:'+width+';line-height:'+height+';text-align:center;color:white;'">
     <button v-if="label">[[label]]</paper-button>
     <v-icon v-if="!label" style="margin-top:-3px;margin-left:3px;">{{icon}}</v-icon>
-    <img id="image" src="{{src}}" :width="width" :height="height" :style="'max-width:100px;max-height:70px;'+trans" />
+    <img id="image" :src="src" :width="width" :height="height" :style="'max-width:100px;max-height:70px;'+trans" />
     <input style="position: fixed;top: -1000px" accept="image/*" type="file" id="flies" on-change="handleFileSelect" name="file" />
   </label>
 </template>
